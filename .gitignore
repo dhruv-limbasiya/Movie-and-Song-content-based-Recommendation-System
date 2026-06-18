@@ -1,0 +1,89 @@
+# =========================
+# Python
+# =========================
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+
+# Virtual Environment
+venv/
+env/
+ENV/
+.venv/
+
+# =========================
+# Streamlit
+# =========================
+.streamlit/secrets.toml
+
+# =========================
+# Jupyter
+# =========================
+.ipynb_checkpoints/
+
+# =========================
+# IDE
+# =========================
+.vscode/
+.idea/
+
+# =========================
+# OS Files
+# =========================
+.DS_Store
+Thumbs.db
+
+# =========================
+# Logs
+# =========================
+logs/
+*.log
+
+# =========================
+# Build / Distribution
+# =========================
+build/
+dist/
+*.egg-info/
+
+# =========================
+# Environment Variables
+# =========================
+.env
+
+# =========================
+# Cache
+# =========================
+.cache/
+.pytest_cache/
+.mypy_cache/
+
+# =========================
+# Large Datasets
+# =========================
+data/raw/
+data/processed/
+data/interim/
+
+# Ignore all CSV files
+*.csv
+
+# But keep sample files if needed
+!data/sample_movies.csv
+!data/sample_songs.csv
+
+# =========================
+# Model Files
+# =========================
+*.pkl
+*.joblib
+*.h5
+*.pt
+*.pth
+
+# =========================
+# Temporary Files
+# =========================
+*.tmp
+*.temp
