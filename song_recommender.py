@@ -9,14 +9,14 @@ file_path = os.path.join(BASE_DIR, 'data', 'hindi_songs.csv')
 
 songs = pd.read_csv(file_path)
 
-# --- STANDARDIZE COLUMN NAMES ---
+# rename columns
 songs = songs.rename(columns={
     'Name': 'track_name',
     'Artists': 'artists',
     'Popularity': 'popularity'
 })
 
-# --- BASIC CLEANING ---
+# basic cleaning
 songs = songs.dropna(subset=['track_name', 'artists']).reset_index(drop=True)
 
 songs = songs[songs['artists'].str.contains(
@@ -24,19 +24,18 @@ songs = songs[songs['artists'].str.contains(
     case=False, na=False
 )]
 
-# ALSO filter by track name (important)
+# filter out songs with non-alphabetic track names (to avoid noise)
 songs = songs[songs['track_name'].str.contains(
     '[a-zA-Z]', regex=True
 )]
 
-# 🔴 LIMIT AFTER FILTERING
+# limit to 2000 songs for performance
 if len(songs) > 2000:
     songs = songs.sort_values('popularity', ascending=False).head(2000)
 
-# 🔴 RESET INDEX AGAIN (VERY IMPORTANT)
+# reset index after filtering
 songs = songs.reset_index(drop=True)
 
-# ================= FEATURE SET =================
 audio_features = [
     'danceability', 'energy', 'valence', 'tempo',
     'acousticness', 'instrumentalness',
@@ -45,25 +44,25 @@ audio_features = [
 
 available_features = [f for f in audio_features if f in songs.columns]
 
-# 🔴 HARD FAIL if no features (prevents fake AI)
+# check if we have any features to work with
 if len(available_features) == 0:
     raise ValueError(
         "Dataset has NO audio features. Use a proper Spotify dataset."
     )
 
-# ================= NORMALIZATION =================
+# normalize feature
 scaler = MinMaxScaler()
 songs_features = songs[available_features].fillna(0)
 songs_features_scaled = scaler.fit_transform(songs_features)
 
-# ================= SIMILARITY =================
+# Similarity matrix
 audio_similarity = cosine_similarity(songs_features_scaled)
 
-# ================= INDEX MAPPING =================
+# index for recommendations
 songs['unique_key'] = songs['track_name'] + " - " + songs['artists']
 song_indices = pd.Series(songs.index, index=songs['unique_key']).drop_duplicates()
 
-# ================= MOOD LOGIC =================
+# Mood logic
 def assign_mood(row):
     valence = row.get('valence', 0.5)
     energy = row.get('energy', 0.5)
@@ -85,7 +84,7 @@ def assign_mood(row):
 # Apply mood
 songs['mood'] = songs.apply(assign_mood, axis=1)
 
-# ================= RECOMMENDER =================
+# Recommendation
 def get_song_recommendations(title, n=10):
     try:
         if title not in song_indices:
@@ -108,7 +107,7 @@ def get_song_recommendations(title, n=10):
     except KeyError:
         return pd.DataFrame()
 
-# ================= FILTER FUNCTIONS =================
+# Filter functions
 def get_songs_by_mood(mood, n=10):
     mood_songs = songs[songs['mood'] == mood]
     if 'popularity' in mood_songs.columns:
