@@ -286,14 +286,7 @@ Contributions are welcome! Here's how to get started:
 - [ ] Deploy on Streamlit Community Cloud
 - [ ] Add unit tests for recommender modules
 
----
-
-## 📜 License
-
-This project is open-source and available under the [MIT License](LICENSE).
-
----
 
 <p align="center">
-  <sub>Built with ❤️ using Python, Streamlit & scikit-learn</sub>
+  <sub>Built with using Python, Streamlit & scikit-learn</sub>
 </p>
