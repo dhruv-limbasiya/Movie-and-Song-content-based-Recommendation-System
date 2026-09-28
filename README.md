@@ -9,7 +9,7 @@
 
 <p align="center">
   <strong>An elegant, content-based recommendation engine for movies and Bollywood music — powered by TF-IDF, cosine similarity, and audio-feature fingerprinting.</strong>
-</p>
+</p> 
 
 <p align="center">
   <a href="#-features">Features</a> •
@@ -263,6 +263,7 @@ typing_extensions==4.15.0                  tzdata==2026.1
 urllib3==2.6.3       watchdog==6.0.0
 ```
 
+<<<<<<< HEAD
 </details>
 
 ---
@@ -290,3 +291,6 @@ Contributions are welcome! Here's how to get started:
 <p align="center">
   <sub>Built with using Python, Streamlit & scikit-learn</sub>
 </p>
+=======
+</details>
+>>>>>>> da03dec (modify README.MD)
