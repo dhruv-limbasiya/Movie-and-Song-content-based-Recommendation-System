@@ -5,7 +5,7 @@
   <img src="https://img.shields.io/badge/License-MIT-green?style=for-the-badge" alt="License">
 </p>
 
-<h1 align="center">✦ Movie & Song Recommendation System</h1>
+<h1 align="center">✦ Movie & Song Recommendation System</h1> 
 
 <p align="center">
   <strong>An elegant, content-based recommendation engine for movies and Bollywood music — powered by TF-IDF, cosine similarity, and audio-feature fingerprinting.</strong>
