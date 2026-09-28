@@ -262,35 +262,3 @@ threadpoolctl==3.6.0 toml==0.10.2          tornado==6.5.5
 typing_extensions==4.15.0                  tzdata==2026.1
 urllib3==2.6.3       watchdog==6.0.0
 ```
-
-<<<<<<< HEAD
-</details>
-
----
-
-## 🤝 Contributing
-
-Contributions are welcome! Here's how to get started:
-
-1. **Fork** the repository
-2. **Create** a feature branch: `git checkout -b feature/your-feature`
-3. **Commit** your changes: `git commit -m "Add your feature"`
-4. **Push** to the branch: `git push origin feature/your-feature`
-5. **Open** a Pull Request
-
-### Ideas for Contribution
-
-- [ ] Add collaborative filtering (user-based or item-based)
-- [ ] Integrate poster images via TMDb API
-- [ ] Add Spotify playback preview links
-- [ ] Implement user session history / watchlist
-- [ ] Deploy on Streamlit Community Cloud
-- [ ] Add unit tests for recommender modules
-
-
-<p align="center">
-  <sub>Built with using Python, Streamlit & scikit-learn</sub>
-</p>
-=======
-</details>
->>>>>>> da03dec (modify README.MD)
